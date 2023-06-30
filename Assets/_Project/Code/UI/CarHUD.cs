@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 using Zenject;
 
@@ -66,7 +65,7 @@ public class CarHUD : MonoBehaviour
             streetAxis += -1f;
         if (_rightButton.IsPressed)
             streetAxis += 1f;
-        if(streetAxis != 0f)
+        if (streetAxis != 0f)
             _targetCar.Steer(streetAxis);
     }
 

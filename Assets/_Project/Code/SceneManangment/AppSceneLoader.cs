@@ -18,8 +18,8 @@ public class AppSceneLoader : MonoBehaviour
     [SerializeField]
     private string _imageViewSceneName = "ImageView";
 
-    private Sprite _imageViewImage;
-
+    private bool _isLoading = false;
+    public bool IsLoading => _isLoading;
 
     private void Awake()
     {
@@ -31,35 +31,64 @@ public class AppSceneLoader : MonoBehaviour
     {
         _loadCanvas.Open(true);
         _loadCanvas.SetPercent(0f, false);
-
+        _isLoading = true;
         _showFakeLoadingTweener?.Kill(true);
         _showFakeLoadingTweener = DOTween.To(t =>
         {
-            _loadCanvas.SetPercent(t, true);
-        }, 0f, 1f, seconds).OnComplete(() => _loadCanvas.Close(true));
+            _loadCanvas.SetPercent(t, false);
+        }, 0f, 1f, seconds).OnComplete(() =>
+        {
+            _isLoading = false;
+            _loadCanvas.Close(true);
+        });
     }
 
+    private const string ISLOADING_WARNING_TEXT = "Can't start a new scene while loading.";
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene(_mainMenuSceneName);
+        _imageViewSceneData.SetImage(null);
+        if (IsLoading)
+        {
+            Debug.LogWarning(ISLOADING_WARNING_TEXT);
+            return;
+        }
         Screen.orientation = ScreenOrientation.Portrait;
+        SceneManager.LoadScene(_mainMenuSceneName);
     }
 
     public void LoadGalllery()
     {
-        SceneManager.LoadScene(_galllerySceneName);
+        _imageViewSceneData.SetImage(null);
+        if (IsLoading)
+        {
+            Debug.LogWarning(ISLOADING_WARNING_TEXT);
+            return;
+        }
+        StartCoroutine(LoadGallleryCoroutine());
+    }
+    private IEnumerator LoadGallleryCoroutine()
+    {
+        ShowFakeLoading(3f);
+        yield return new WaitForSeconds(1f);
         Screen.orientation = ScreenOrientation.Portrait;
+        SceneManager.LoadScene(_galllerySceneName);
     }
 
     public void LoadImageView(Sprite image)
     {
-        _imageViewImage = image;
+        if (IsLoading)
+        {
+            Debug.LogWarning(ISLOADING_WARNING_TEXT);
+            return;
+        }
+        StartCoroutine(LoadImageViewCoroutine(image));
+    }
+    private IEnumerator LoadImageViewCoroutine(Sprite image)
+    {
+        ShowFakeLoading(3f);
+        _imageViewSceneData.SetImage(image);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(_imageViewSceneName);
         Screen.orientation = ScreenOrientation.AutoRotation;
-    }
-
-    public Sprite GetImageViewImage()
-    {
-        return _imageViewImage;
     }
 }

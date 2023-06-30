@@ -10,7 +10,7 @@ namespace DCFApixels
 #if UNITY_EDITOR
         protected void OnValidate()
         {
-            if(_duration < float.Epsilon)
+            if (_duration < float.Epsilon)
             {
                 _duration = float.Epsilon;
             }
@@ -58,7 +58,7 @@ namespace DCFApixels
             get => _playOnEnable; set
             {
                 _playOnEnable = value;
-                if(!_isRunning && enabled)
+                if (!_isRunning && enabled)
                 {
                     StartAnimation();
                 }
@@ -98,7 +98,7 @@ namespace DCFApixels
 
         private void OnEnable()
         {
-            if(_isRunning == false && _playOnEnable)
+            if (_isRunning == false && _playOnEnable)
             {
                 StartAnimation();
             }
@@ -141,7 +141,7 @@ namespace DCFApixels
         public void StartAnimation()
         {
             _loopNumber = 0;
-            if(_randomStartTime)
+            if (_randomStartTime)
             {
                 _time = UnityRandom.Range(0f, _duration);
             }
@@ -188,7 +188,7 @@ namespace DCFApixels
             }
 
             float t = _time / _duration;
-            if(!_yoyoCurve)
+            if (!_yoyoCurve)
                 t = _curve.Evaluate(t);
 
             if (_loopMode == eLoopMode.Yoyo && _loopNumber % 2 == 1)
@@ -255,10 +255,10 @@ namespace DCFApixels.Editors
     public class SimpleAnimationBaseEditor : Editor
     {
         private static Type _baseType = typeof(SimpleAnimationBase);
-        private static MethodInfo _startMethodInfo   = _baseType.GetMethod("StartAnimation", BindingFlags.Instance | BindingFlags.Public);
-        private static MethodInfo _stopMethodInfo    = _baseType.GetMethod("StopAnimation"    , BindingFlags.Instance | BindingFlags.Public);
-        private static MethodInfo _pauseMethodInfo   = _baseType.GetMethod("PauseAnimation"   , BindingFlags.Instance | BindingFlags.Public);
-        private static MethodInfo _resumeMethodInfo  = _baseType.GetMethod("ResumeAnimation"  , BindingFlags.Instance | BindingFlags.Public);
+        private static MethodInfo _startMethodInfo = _baseType.GetMethod("StartAnimation", BindingFlags.Instance | BindingFlags.Public);
+        private static MethodInfo _stopMethodInfo = _baseType.GetMethod("StopAnimation", BindingFlags.Instance | BindingFlags.Public);
+        private static MethodInfo _pauseMethodInfo = _baseType.GetMethod("PauseAnimation", BindingFlags.Instance | BindingFlags.Public);
+        private static MethodInfo _resumeMethodInfo = _baseType.GetMethod("ResumeAnimation", BindingFlags.Instance | BindingFlags.Public);
 
         private static Color _timeBarBackgroundColor = new Color(0, 0, 0, 0.34f);
         private static Color _timeBarForegroundColor = new Color(111f / 255f, 186f / 255f, 1f, 0.37f);
@@ -280,7 +280,7 @@ namespace DCFApixels.Editors
 
             base.OnInspectorGUI();
 
-            if(!target.IsRunning)
+            if (!target.IsRunning)
             {
                 if (GUILayout.Button("Start"))
                 {
@@ -295,7 +295,7 @@ namespace DCFApixels.Editors
                 }
             }
 
-            if(!target.IsPaused)
+            if (!target.IsPaused)
             {
                 if (GUILayout.Button("Pause"))
                 {

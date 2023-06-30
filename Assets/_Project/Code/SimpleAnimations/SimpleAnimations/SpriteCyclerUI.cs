@@ -19,7 +19,7 @@ namespace DCFApixels
         private Image _image;
         [SerializeField]
         private Sprite[] _spriteSequence;
-    
+
         protected override void Do(float t)
         {
             int index = Mathf.Min((int)(t * _spriteSequence.Length), _spriteSequence.Length - 1);

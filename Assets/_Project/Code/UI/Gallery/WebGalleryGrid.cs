@@ -1,44 +1,45 @@
-﻿using DCFApixels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 internal class WebGalleryGrid : MonoBehaviour
 {
-
+    [ContextMenu("Set Refs")]
     private void setRefs()
     {
         _gridLayoutGroup = GetComponentInChildren<GridLayoutGroup>(true);
-        _images = GetComponentsInChildren<Image>(true);
+        _images = GetComponentsInChildren<ImagePreview>(true);
     }
 
     [SerializeField]
     private GridLayoutGroup _gridLayoutGroup;
     [SerializeField]
-    private Image[] _images;
-
+    private ImagePreview[] _images;
+    [SerializeField]
     private int columns = 2;
 
-    private bool _isVerticalOrientation;
 
-    public Image GetImage(int index)
+    private float _cellSize;
+
+    public ImagePreview GetImage(int index)
     {
         return _images[index];
     }
 
-    private void OnEnable()
+    private async void OnEnable()
     {
-        RectTransform rectTransform = GetComponent<RectTransform>();
-        ApplyGrid();
+        await Task.Delay(1);
+        UpdateCellSize();
+        for (int i = 0; i < _images.Length; i++)
+        {
+            _images[i].SetIndex(i);
+        }
     }
 
-    private void ApplyGrid()
+    private void UpdateCellSize()
     {
         RectTransform rectTransform = GetComponent<RectTransform>();
-        float cellSize = rectTransform.rect.width / columns;
-        _gridLayoutGroup.cellSize = Vector2.one * cellSize;
+        _cellSize = rectTransform.rect.width / columns;
+        _gridLayoutGroup.cellSize = Vector2.one * _cellSize;
     }
 }

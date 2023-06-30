@@ -1,5 +1,5 @@
-﻿using Zenject;
-using UnityEngine;
+﻿using UnityEngine;
+using Zenject;
 
 internal class SceneCarSelectionServiceInstaller : MonoInstaller
 {

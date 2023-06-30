@@ -1,8 +1,7 @@
 using DCFApixels;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using DG.Tweening;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class TapSwitchColor : MonoBehaviour, IPointerClickHandler
 {

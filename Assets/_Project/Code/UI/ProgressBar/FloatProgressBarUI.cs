@@ -1,16 +1,17 @@
 ﻿using DCFApixels.UI.Internal;
 using DG.Tweening;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 namespace DCFApixels
 {
     [ExecuteAlways]
     public class FloatProgressBarUI : MonoBehaviour
     {
+        [SerializeField]
+        private bool _executeAlwaysRuntime = false;
+
         [SerializeReference, SerializeReferenceButton]
         private IProgressBarBehaviour _behaviour;
         public bool TryGetBehaivour<T>(out T behaviour) where T : class, IProgressBarBehaviour
@@ -107,7 +108,7 @@ namespace DCFApixels
         {
             if (IsValide() == false)
                 return;
-            if (Application.isPlaying == false)
+            if (Application.isPlaying == false || _executeAlwaysRuntime)
             {
                 _behaviour?.SetFillAmount(this, _range.PercentClamp(_value), false);
                 if (_color != null)
@@ -234,7 +235,7 @@ namespace DCFApixels.UI.Internal
         }
 
     }
-  
+
     [System.Serializable]
     public class SliderProgressBarBehavior : IProgressBarBehaviour
     {
@@ -469,7 +470,7 @@ namespace DCFApixels.UI.Internal
         void IProgressBarBehaviourInit.Init(FloatProgressBarUI source)
         {
             foreach (var item in _behaviours)
-                if(item is IProgressBarBehaviourInit target)
+                if (item is IProgressBarBehaviourInit target)
                     target.Init(source);
         }
         void IProgressBarBehaviourDisable.OnDisable(FloatProgressBarUI source)

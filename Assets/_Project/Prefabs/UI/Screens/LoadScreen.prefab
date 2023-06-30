@@ -58,7 +58,7 @@ MonoBehaviour:
   _range:
     x: 0
     length: 1
-  _value: 0.39
+  _value: 1
   _color:
     _hasValue: 0
     _value: {r: 0, g: 0, b: 0, a: 0}

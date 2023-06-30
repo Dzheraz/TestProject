@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8364372827623072569}
+  - component: {fileID: 1802889515199236776}
   m_Layer: 5
   m_Name: MainMenuScreen
   m_TagString: Untagged
@@ -38,6 +39,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1802889515199236776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6138299406033945452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9197949007c982046a3d34b1ca45a242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _galleyButton: {fileID: 493459096432332888}
 --- !u!1001 &4438060379156165179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -88,12 +102,12 @@ PrefabInstance:
     - target: {fileID: 4273412511459749217, guid: 880aee821a390a24aa83045a3227528c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 700
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4273412511459749217, guid: 880aee821a390a24aa83045a3227528c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1233.3333
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4273412511459749217, guid: 880aee821a390a24aa83045a3227528c,
         type: 3}
@@ -282,6 +296,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b91a6c3e1302cf4381f0937736dfc4a, type: 3}
+--- !u!114 &493459096432332888 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9037856041561009451, guid: 7b91a6c3e1302cf4381f0937736dfc4a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8914299594814553459}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &493459096432332889 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9037856041561009450, guid: 7b91a6c3e1302cf4381f0937736dfc4a,

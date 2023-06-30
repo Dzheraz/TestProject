@@ -28,7 +28,7 @@ public class JuiceBoomVFX : MonoBehaviour
         if (_playCoroutine != null)
         {
             StopCoroutine(_playCoroutine);
-            _playCoroutine = null;  
+            _playCoroutine = null;
         }
     }
 

@@ -15,7 +15,7 @@ namespace Assets
             DontDestroyOnLoad(instance.gameObject);
             Container.Bind<LoadCanvas>().FromInstance(instance).AsSingle().NonLazy();
 
-           // Container.QueueForInject();
+            // Container.QueueForInject();
         }
     }
 }

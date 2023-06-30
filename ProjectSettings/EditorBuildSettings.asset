@@ -8,4 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Scenes/Task2/SubTask2.unity
     guid: e46e1ac5fe5cb75468fae0672bd2a83e
+  - enabled: 1
+    path: Assets/_Project/Scenes/Task1/Bootstrap.unity
+    guid: d02f4d48a99c48342ac584e666d30a38
+  - enabled: 1
+    path: Assets/_Project/Scenes/Task1/Gallery.unity
+    guid: 3487d7bc0a4e4b046a24124f35b5771f
+  - enabled: 1
+    path: Assets/_Project/Scenes/Task1/ImageView.unity
+    guid: fb5371e747f5cf040a8d878da20a28cb
+  - enabled: 1
+    path: Assets/_Project/Scenes/Task1/MainMenu.unity
+    guid: 0adc0bbc1eccae04197d5156a3272508
   m_configObjects: {}
