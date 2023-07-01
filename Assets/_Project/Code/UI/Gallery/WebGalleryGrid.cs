@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 internal class WebGalleryGrid : MonoBehaviour
@@ -26,20 +25,24 @@ internal class WebGalleryGrid : MonoBehaviour
         return _images[index];
     }
 
-    private async void OnEnable()
+    private void OnEnable()
     {
-        await Task.Delay(1);
-        UpdateCellSize();
         for (int i = 0; i < _images.Length; i++)
         {
             _images[i].SetIndex(i);
         }
     }
 
-    private void UpdateCellSize()
+    public void SetWidth(float width)
     {
-        RectTransform rectTransform = GetComponent<RectTransform>();
-        _cellSize = rectTransform.rect.width / columns;
+        UpdateCellSize(width);
+    }
+
+    private void UpdateCellSize(float width)
+    {
+        //RectTransform rectTransform = GetComponent<RectTransform>();
+        // _cellSize = rectTransform.rect.width / columns;
+        _cellSize = width / columns;
         _gridLayoutGroup.cellSize = Vector2.one * _cellSize;
     }
 }

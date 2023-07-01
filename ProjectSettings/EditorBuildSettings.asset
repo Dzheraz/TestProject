@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Project/Scenes/Task2/SubTask2.unity
     guid: e46e1ac5fe5cb75468fae0672bd2a83e
   - enabled: 1
@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Scenes/Task1/MainMenu.unity
     guid: 0adc0bbc1eccae04197d5156a3272508
+  - enabled: 0
+    path: Assets/_Project/Scenes/Task2/SubTask1.unity
+    guid: 08d1bd29c0868cf419c666162ba495c9
   m_configObjects: {}
